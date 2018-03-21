@@ -19,15 +19,21 @@ public class Bataille {
       System.out.println(magicien1.nomSort);
       magicien.nomSort = "poudre";
       System.out.println(magicien1.nomSort); */
-
+      
+      
       Scanner sc = new Scanner(System.in);
-
+     
       System.out.println("Choisir votre personnage : 1.Guerrier ou 2.Magicien ?");
       String strPersonnage = sc.nextLine();
       System.out.println("Vous avez saisi : " + strPersonnage);
       //Tableau contenant personnages//
       Personnage personnages[] = new Personnage[10];
       int nbPers =0;
+   /*    //voir les 10 personnages en utilisant une boucle
+    System.out.println("Entrer 10 caracteres:");
+    for (int nbPers=0;nbPers<10;nbPers++) {
+      caracteres[nbPers]=sc.nextInt();//assigne le caractere au tableau
+    }//end of for */
 
       //condition//
         if (strPersonnage.equals("Guerrier")){
@@ -69,11 +75,52 @@ public class Bataille {
       guerrier.setBouclier(nomBouclier);
 
       
-      //Afficher les infos du personnage créé
-      System.out.println("Afficher les informations de votre guerrier ?");
-      System.out.println(" Nom : "+ nomName + "\nImage : " + nomImage + "\nArme : " + nomArme + "\nNiveau de vie : " + nomVie + "\nForce Attaque : " + nomAttaque + "\nBouclier : " + nomBouclier);
-      System.out.println(guerrier);
-        }
+      //choix multiple - Afficher/modifier/attaquer/ajouter les infos du personnage créé
+      System.out.println( " \n1 -Afficher les informations de votre guerrier ?");
+      System.out.println( " \n2-Modifier les infos de votre personnage ?");
+      System.out.println( " \n3-Attaquer?");
+      System.out.println( " \n4-Ajouter une arme?");
+      //System.out.println( " \n5-Afficher tous les personnages crées?");
+
+      System.out.println("Entrez votre choix:");
+
+      //Get user's choice
+      int choice = sc.nextInt();
+
+      //Display the choice of user
+      switch (choice) {
+        case 1: System.out.println(" Nom : "+ nomName + "\nImage : " + nomImage + "\nArme : " + nomArme + "\nNiveau de vie : " + nomVie + "\nForce Attaque : " + nomAttaque + "\nBouclier : " + nomBouclier); 
+ break;
+        case 2: System.out.println("Modifier");
+                break;
+        case 3: System.out.println("Attaquer"); 
+                break;
+        case 4: System.out.println("Ajouter arme"); 
+                 break;
+        /* case 5: System.out.println("es personnages créés sont:");
+        for (int nbPers=0;nbPers<10;nbPers++) 
+            System.out.print(caracteres[nbPers]+" "); 
+                 break; */
+        default: System.out.println("Choix invalide");
+    }//end of switch  
+        System.out.println("Voulez-vous réessayer  ?");
+        System.out.println(" \n1 :O \n2 :N");
+        System.out.println("Entrez votre choix:");
+
+        //Get user's choice
+      int choice1 = sc.nextInt();
+
+      //Display the choice of user
+      switch (choice1) {
+        case 1: System.out.println("Choisir votre personnage : 1.Guerrier ou 2.Magicien ?");
+                System.out.println( " \n1 -Afficher les informations de votre guerrier ?");
+                System.out.println( " \n2-Modifier les infos de votre personnage ?");
+                System.out.println( " \n3-Attaquer?");
+                System.out.println( " \n4-Ajouter une arme?"); 
+                  break;
+        case 2: System.out.println("Good bye");
+      }
+    }
       
 
       else if (strPersonnage.equals("Magicien")){
@@ -115,10 +162,52 @@ public class Bataille {
         magicien.setPhiltre(nomPhiltre);
   
         
-        //Afficher les infos du personnage créé
-        System.out.println("Afficher les informations de votre magicien ?");
-        System.out.println(" Nom : "+ nomName + "\nImage : " + nomImage + "\nSort : " + nomSort + "\nNiveau de vie : " + nomVie + "\nForce Attaque : " + nomAttaque + "\nPhiltre : " + nomPhiltre);
-        System.out.println(magicien);        
+         //choix multiple - Afficher/modifier/attaquer/ajouter les infos du personnage créé
+      System.out.println( " \n1 -Afficher les informations de votre magicien ?");
+      System.out.println( " \n2-Modifier les infos de votre personnage ?");
+      System.out.println( " \n3-Attaquer?");
+      System.out.println( " \n4-Ajouter un sort?");
+      //System.out.println( " \n5-Afficher tous les personnages crées?");
+
+      System.out.println("Entrez votre choix:");
+
+      //Get user's choice
+      int choice = sc.nextInt();
+
+      //Display the choice of user
+      switch (choice) {
+        case 1: System.out.println(" Nom : "+ nomName + "\nImage : " + nomImage + "\nSort : " + nomSort + "\nNiveau de vie : " + nomVie + "\nForce Attaque : " + nomAttaque + "\nPhiltre : " + nomPhiltre); 
+                break;
+        case 2: System.out.println("Modifier");
+                break;
+        case 3: System.out.println("Attaquer"); 
+                break;
+        case 4: System.out.println("Ajouter sort"); 
+                 break;
+        /* case 5: System.out.println("es personnages créés sont:");
+        for (int nbPers=0;nbPers<10;nbPers++) 
+            System.out.print(caracteres[nbPers]+" "); 
+                 break; */
+        default: System.out.println("Choix invalide");
+    }//end of switch  
+        System.out.println("Voulez-vous réessayer  ?");
+        System.out.println(" \n1 :O \n2 :N");
+        System.out.println("Entrez votre choix:");
+
+        //Get user's choice
+      int choice1 = sc.nextInt();
+
+      //Display the choice of user
+      switch (choice1) {
+        case 1: System.out.println("Choisir votre personnage : 1.Guerrier ou 2.Magicien ?");
+                System.out.println( " \n1 -Afficher les informations de votre magicien ?");
+                System.out.println( " \n2-Modifier les infos de votre personnage ?");
+                System.out.println( " \n3-Attaquer?");
+                System.out.println( " \n4-Ajouter un sort?"); 
+                  break;
+        case 2: System.out.println("Good bye");
+      }
+    }       
            
 
            sc.close();
@@ -136,4 +225,3 @@ public class Bataille {
       
         } 
       }
-} 
