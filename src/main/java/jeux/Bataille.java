@@ -3,225 +3,174 @@ package jeux;
 import java.util.Scanner;
 
 public class Bataille {
-    
-      public static void main(String[] args) {
-      /* Guerrier guerrier = new Guerrier();
-      System.out.println(guerrier.nomGuerrier);
-      guerrier.nomGuerrier = "Valdemor";
-      System.out.println(guerrier.nomGuerrier);
 
-      Magicien magicien = new Magicien();
-      System.out.println(magicien.nomMagicien);
-      magicien.nomMagicien = "Merlin";
-      System.out.println(magicien.nomMagicien);
+    protected static Scanner sc;
+    protected static Personnage personnages[] = new Personnage[10]; //Tableau contenant les personnages, tableau d'objets Personnage
+    protected static int nbPersonnage = 0;
 
-      Magicien magicien1 = new Magicien("Cruella", "test", 20 , 20 );
-      System.out.println(magicien1.nomSort);
-      magicien.nomSort = "poudre";
-      System.out.println(magicien1.nomSort); */
-      
-      
-      Scanner sc = new Scanner(System.in);
-     
-      System.out.println("Choisir votre personnage : 1.Guerrier ou 2.Magicien ?");
-      String strPersonnage = sc.nextLine();
-      System.out.println("Vous avez saisi : " + strPersonnage);
-      //Tableau contenant personnages//
-      Personnage personnages[] = new Personnage[10];
-      int nbPers =0;
-   /*    //voir les 10 personnages en utilisant une boucle
-    System.out.println("Entrer 10 caracteres:");
-    for (int nbPers=0;nbPers<10;nbPers++) {
-      caracteres[nbPers]=sc.nextInt();//assigne le caractere au tableau
-    }//end of for */
+    public static void main(String[] args) {
+        Boolean reponse = true;
+        int i = 0;
+        String choixPersonnage;
 
-      //condition//
-        if (strPersonnage.equals("Guerrier")){
-      // création du personnage//
-      Guerrier guerrier = new Guerrier();
-      //Ajout du personnage dans le tableau personnages
-      personnages[nbPers]=guerrier; 
-      //Incrémente le nombre de personnage dans le tableau
-      nbPers++;       
-      
-      //choix du nom//  
-      System.out.println("Choisir votre nom : ");
-      String nomName = sc.nextLine();
-      guerrier.setNom(nomName);
+        System.out.println("Commencez le jeu!");
+        sc = new Scanner(System.in);
+        int choix;
 
-      //choix image//  
-      System.out.println("Choisir votre image : ");
-      String nomImage = sc.nextLine();
-      guerrier.setImage(nomImage);
+        do {
+            AfficherMenu();
+            choix = sc.nextInt();
+            sc.nextLine();
 
-      //choix arme ou sort//
-      System.out.println("Choisir votre arme : ");
-      String nomArme = sc.nextLine();
-      guerrier.setArme(nomArme);
+            switch (choix) {
+                case 1:
+                    CreerPersonnage();
+                    break;
+                case 2:
+                    AfficherPersonnage();
+                    break;
+                case 3:
+                    ModifierPersonnage();
+                    break;
+                case 4:
+                    LancerAttaque();
+                    break;
+                case 5:
+                    AjouterSortArme();
+                default:
+                    System.out.println("Erreur, recommence");
+            }
+            System.out.println("See u !");
 
-      //choix niveau vie//
-      System.out.println("Quel est le niveau de vie : ");
-      int nomVie = sc.nextInt();
-      guerrier.setVie(nomVie);
-      
-      //choix niveau attaque//
-      System.out.println("Quel est le niveau d'attaque : ");
-      int nomAttaque = sc.nextInt();
-      guerrier.setAttaque(nomAttaque);
-
-      //choix niveau bouclier//
-      System.out.println("Quelle force souhaitez-vous donner au bouclier de votre guerrier ?");
-      int nomBouclier = sc.nextInt();
-      guerrier.setBouclier(nomBouclier);
-
-      
-      //choix multiple - Afficher/modifier/attaquer/ajouter les infos du personnage créé
-      System.out.println( " \n1 -Afficher les informations de votre guerrier ?");
-      System.out.println( " \n2-Modifier les infos de votre personnage ?");
-      System.out.println( " \n3-Attaquer?");
-      System.out.println( " \n4-Ajouter une arme?");
-      //System.out.println( " \n5-Afficher tous les personnages crées?");
-
-      System.out.println("Entrez votre choix:");
-
-      //Get user's choice
-      int choice = sc.nextInt();
-
-      //Display the choice of user
-      switch (choice) {
-        case 1: System.out.println(" Nom : "+ nomName + "\nImage : " + nomImage + "\nArme : " + nomArme + "\nNiveau de vie : " + nomVie + "\nForce Attaque : " + nomAttaque + "\nBouclier : " + nomBouclier); 
- break;
-        case 2: System.out.println("Modifier");
-                break;
-        case 3: System.out.println("Attaquer"); 
-                break;
-        case 4: System.out.println("Ajouter arme"); 
-                 break;
-        /* case 5: System.out.println("es personnages créés sont:");
-        for (int nbPers=0;nbPers<10;nbPers++) 
-            System.out.print(caracteres[nbPers]+" "); 
-                 break; */
-        default: System.out.println("Choix invalide");
-    }//end of switch  
-        System.out.println("Voulez-vous réessayer  ?");
-        System.out.println(" \n1 :O \n2 :N");
-        System.out.println("Entrez votre choix:");
-
-        //Get user's choice
-      int choice1 = sc.nextInt();
-
-      //Display the choice of user
-      switch (choice1) {
-        case 1: System.out.println("Choisir votre personnage : 1.Guerrier ou 2.Magicien ?");
-                System.out.println( " \n1 -Afficher les informations de votre guerrier ?");
-                System.out.println( " \n2-Modifier les infos de votre personnage ?");
-                System.out.println( " \n3-Attaquer?");
-                System.out.println( " \n4-Ajouter une arme?"); 
-                  break;
-        case 2: System.out.println("Good bye");
-      }
+        } while (choix != 5);
     }
-      
 
-      else if (strPersonnage.equals("Magicien")){
-        // création du personnage//
-        Magicien magicien = new Magicien();
-        //Ajout du personnage dans le tableau personnages
-        personnages[nbPers]=magicien; 
-        //Incrémente le nombre de personnage dans le tableau
-        nbPers++;       
-        
-        //choix du nom//  
-        System.out.println("Choisir votre nom : ");
-        String nomName = sc.nextLine();
-        magicien.setNom(nomName);
-  
-        //choix image//  
+    // Affichage du tableau des personnages
+    public static void AfficherPersonnage() {
+        for (int i = 0; i < nbPersonnage; i++) {
+            System.out.println(personnages[i]);
+        }
+    }
+    //**************Méthode permettant d'afficher le menu******************//
+    public static void AfficherMenu() {
+        System.out.println(" Que voulez-vous faire ? ");
+        System.out.println(" \n1 -Créer un nouveau personnage ?");
+        System.out.println(" \n2 -Afficher les informations de vos personnages ?");
+        System.out.println(" \n3 -Modifier les infos de votre personnage ?");
+        System.out.println(" \n4 -Attaquer?");
+        System.out.println(" \n5 -Ajouter un sort ou une arme ?");
+        System.out.println(" \n6 Quitter");
+    }
+    public static void CreerPersonnage() {
+        String choixPersonnage;
+        System.out.println("Choisir votre personnage : \n1.Guerrier ou \n2.Magicien");
+        choixPersonnage = sc.nextLine();
+
+        if (choixPersonnage.equals("1")) {
+            System.out.println("Vous avez choisi de créer un guerrier");
+            CreerGuerrier();
+        }
+
+        if (choixPersonnage.equals("2")) {
+            System.out.println("Vous avez choisi de créer un magicien");
+            CreerMagicien();
+        }
+    }
+
+    public static void ModifierPersonnage(){
+
+            int choixModification;
+            String newNom;
+
+            System.out.println("Quel personnage souhaitez-vous modifier ?");
+            for (int i = 0; i < nbPersonnage; i++)
+            {
+                System.out.println("\n" + i + ". "+ personnages[i].getNom());
+            }
+            choixModif = sc.nextInt();
+            sc.nextLine();
+            System.out.println(personnages[choixModification]);
+            System.out.println("Nouveau nom pour : "+ personnages[choixModification].getNom());
+            newNom = sc.nextLine();
+            personnages[choixModification].setNom(newNom);
+            System.out.println("Nouveau nom "+ personnages[choixModification].getNom());
+
+        }
+    public static void LancerAttaque(){
+
+    }
+    public static void AjouterSortArme(){
+
+    }
+    public static void CreerGuerrier() {
+        //************** création du personnage*****************//
+        Guerrier guerrier1 = new Guerrier();
+        //***************Ajout du personnage dans le tableau personnages**************//
+        personnages[nbPers] = guerrier1;
+        //****************Incrémente le nombre de personnage dans le tableau**********//
+        nbPers++;
+        //****************choix du nom************************************************//
+        System.out.println("Choisir le nom : ");
+        guerrier1.setNom(entre.creerNom());//mutateur (setter) de la classe personnage, Appelle la méthode dans la classe creer
+        //****************choix image**************************************************//
         System.out.println("Choisir votre image : ");
-        String nomImage = sc.nextLine();
-        magicien.setImage(nomImage);
-  
-        //choix arme ou sort//
-        System.out.println("Choisir votre sort : ");
-        String nomSort = sc.nextLine();
-        magicien.setSort(nomSort);
-  
-        //choix niveau vie//
+        guerrier1.setImage(entre.creerImage());
+        //****************choix arme**************************************************//
+        System.out.println("Choisir votre arme : ");
+        guerrier1.setArme(entre.creerArme());
+        //******************choix niveau vie*********************************************//
         System.out.println("Quel est le niveau de vie : ");
-        int nomVie = sc.nextInt();
-        magicien.setVie(nomVie);
-        
-        //choix niveau attaque//
-        System.out.println("Quel est le niveau d'attaque : ");
-        int nomAttaque = sc.nextInt();
-        magicien.setAttaque(nomAttaque);
-  
-        //choix niveau philtre//
+        guerrier1.setVie(entre.creerVie());
+        //*****************choix force attaque******************************************//
+        System.out.println("Quel est le niveau de force d'attaque : ");
+        guerrier1.setAttaque(entre.creerAttaque());
+        //****************choix niveau bouclier****************************************//
+        System.out.println("Quelle force souhaitez-vous donner au bouclier de votre guerrier ?");
+        guerrier1.setBouclier(entre.creerBouclier());
+        //Affiche le nom du personnage créé avec le message "personnage créé"
+        System.out.println("***********************************************");
+        System.out.println("Votre guerrier " + guerrier1.getNom() + " est créé");
+        System.out.println("***********************************************");
+    }
+
+
+    public static void CreerMagicien() {
+
+        Magicien magicien1 = new Magicien();
+        personnages[nbPers] = magicien1;
+        nbPers++;
+        System.out.println("Choisir le nom : ");
+        magicien1.setNom(entre.creerNom());//mutateur (setter) de la classe personnage, Appelle la méthode dans la classe creer
+        System.out.println("Choisir votre image : ");
+        magicien1.setImage(entre.creerimage());
+        System.out.println("Choisir votre sort : ");
+        magicien1.setSort(entre.creerSort());
+        System.out.println("Quel est le niveau de vie : ");
+        magicien1.setVie(entre.creerVie());
+        System.out.println("Quel est le niveau de force d'attaque : ");
+        magicien1.setAttaque(entre.creerAttaque());
         System.out.println("Quelle force souhaitez-vous donner au philtre de votre magicien ?");
-        int nomPhiltre = sc.nextInt();
-        magicien.setPhiltre(nomPhiltre);
-  
-        
-         //choix multiple - Afficher/modifier/attaquer/ajouter les infos du personnage créé
-      System.out.println( " \n1 -Afficher les informations de votre magicien ?");
-      System.out.println( " \n2-Modifier les infos de votre personnage ?");
-      System.out.println( " \n3-Attaquer?");
-      System.out.println( " \n4-Ajouter un sort?");
-      //System.out.println( " \n5-Afficher tous les personnages crées?");
+        magicien1.setPhiltre(entre.creerPhiltre());
+        //Affiche le nom du personnage créé avec le message "personnage créé"
+        System.out.println("***********************************************");
+        System.out.println("Votre magicien " + magicien1.getNom() + " a été créé");
+        System.out.println("***********************************************");
+    }
+}
 
-      System.out.println("Entrez votre choix:");
 
-      //Get user's choice
-      int choice = sc.nextInt();
+/*Afficher la liste des personnages : boucle sur le tableau personnages ******//
+        /*System.out.println("Choisissez votre personnage");
+        AfficherUneListe(personnages);//appel methode AfficherUneListe ligne 223
 
-      //Display the choice of user
-      switch (choice) {
-        case 1: System.out.println(" Nom : "+ nomName + "\nImage : " + nomImage + "\nSort : " + nomSort + "\nNiveau de vie : " + nomVie + "\nForce Attaque : " + nomAttaque + "\nPhiltre : " + nomPhiltre); 
-                break;
-        case 2: System.out.println("Modifier");
-                break;
-        case 3: System.out.println("Attaquer"); 
-                break;
-        case 4: System.out.println("Ajouter sort"); 
-                 break;
-        /* case 5: System.out.println("es personnages créés sont:");
-        for (int nbPers=0;nbPers<10;nbPers++) 
-            System.out.print(caracteres[nbPers]+" "); 
-                 break; */
-        default: System.out.println("Choix invalide");
-    }//end of switch  
-        System.out.println("Voulez-vous réessayer  ?");
-        System.out.println(" \n1 :O \n2 :N");
-        System.out.println("Entrez votre choix:");
+        //*******Récupérer le choix de l'utilisateur pour le personnage sélectionné ***********//
+        /*int persoSelected = sc.nextInt();
 
-        //Get user's choice
-      int choice1 = sc.nextInt();
+        //**********Afficher les infos du personnage sélectionné ***************//
+        /*System.out.println(personnages[persoSelected]);
+        break;
 
-      //Display the choice of user
-      switch (choice1) {
-        case 1: System.out.println("Choisir votre personnage : 1.Guerrier ou 2.Magicien ?");
-                System.out.println( " \n1 -Afficher les informations de votre magicien ?");
-                System.out.println( " \n2-Modifier les infos de votre personnage ?");
-                System.out.println( " \n3-Attaquer?");
-                System.out.println( " \n4-Ajouter un sort?"); 
-                  break;
-        case 2: System.out.println("Good bye");
-      }
-    }       
-           
 
-           sc.close();
-           
-      /* Guerrier guerrier = new Guerrier();
-      String thisname = "Coin-Coin warrior";
-      String thisweapon = "sabre";
-    
-      guerrier.setName(thisname);
-      guerrier.setWeapon(thisweapon);
-      guerrier.setlifeLevel(25);
-      guerrier.setattackStrenght(50);
 
-      guerrier.Guerrier(); */
-      
-        } 
-      }
+
+
